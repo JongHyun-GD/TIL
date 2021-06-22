@@ -1,6 +1,3 @@
-다익스트라를 활용한 문제를 풀어보았다. 풀이 방법도 바로 알아챘고 구현에도 그리 어려움이 없었는데, 마지막 반례에서 계속 틀렸습니다가 나오는 상태다.
-
-```c++
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -72,6 +69,13 @@ int		main(void)
 	{
 		fill(y_w.begin(), y_w.end(), INF);
 		dijkstra(route[i], &y_w);
+		while (y_w[route[i+1]] >= INF){
+			i++;
+			if (i >= 9)
+				break;
+		}
+		if (i >= 9)
+			break;
 		if (y_w[route[i+1]] < INF && route[i+1] < ans && sum+y_w[route[i+1]] >= x_w[route[i+1]])
 			ans = route[i+1];
 		if (y_w[route[i+1]] < INF)
@@ -81,5 +85,3 @@ int		main(void)
 	cout << ans << "\n";
 	return (0);
 }
-```
-
