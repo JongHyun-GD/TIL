@@ -14,7 +14,7 @@
 
 ### What is a Neural Network?
 
-![Imgur](https://i.imgur.com/Egi5782.jpg)
+![Imgur](https://i.imgur.com/ZCFuyRG.png)
 - Input으로 들어오는 x 벡터가 있다. 이 벡터의 요소들은 각 뉴런에 Input값으로 주어진다. (사진에서는 몇개만 뉴런으로 들어가지만 실제로는 전부 들어간다) 그러면 각 뉴런은 각자의 함수를 통해 인풋값을 정제해서 내보낸다. 이런 일들이 연속적으로 벌어지고 그 결과로 y가 나온다.
 
 ### Outline of this course
