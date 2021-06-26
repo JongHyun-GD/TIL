@@ -57,4 +57,23 @@
   - ![Imgur](https://i.imgur.com/kMPtcnA.png)
   - J(w, b)를 미분한 값은 코드에서 단순화를 위해 주로 `dw`로 표현된다.
   - 결국 코드는 `w = w - alpha * dw` 가 될 것이다. 이 때, `alpha` 는 learning rate를 의미한다.
-  - 
+
+## Deivatives with a Computation Graph
+
+- 신경망을 구성했다고 했을 때, 적절한 w값을 얻기 위해서 Backward Propagation을 한다. 이를 위해선 미분값이 필요한데, 그 이유는 무엇일까? 2차원 그래프에서가 아니라 신경망의 구조를 통해서 그 이유를 살펴보자.
+
+  - 일단 미분은 무엇인가? 미분은 한 요소에 따른 어떤 값의 변화량을 산출한 것이다. 예를 들어 아래 식은 a값의 변화에 따른 J값의 변화량이며 또한 a에 대한 J의 미분값이다.
+
+    ![img](https://latex.codecogs.com/gif.image?\frac{dJ}{da})
+
+  - ![Imgur](https://i.imgur.com/AZpQBi0.png)
+
+  - 실제로 신경망엔 위 그림과 같이 여러요소(X 벡터)가 들어가고 이는 어떤 프로세스(Hidden Layer)를 거쳐 결과값(J)으로 이어진다. 그렇다면 맨처음의 요소가 결과값에 대해서 어떤 영향을 미치는 지를 알아내는 건 조금 추상적으로 느껴질 수 있다. 그러니까 생각보다 dJ/da가 어려운 것이다.
+
+  - 이 고민은 **Chain rule**을 통해 풀 수 있다. 체인 룰은 다음의 식과 같이 작동한다.
+
+  - ![img](https://latex.codecogs.com/gif.image?\frac{dJ}{da} = \frac{dJ}{dv}*\frac{dv}{da})
+
+  - 실제로 코딩할 때, 우리는 이러한 단계적인 미분값을 얻을 것이고 이를 곱해서 실질적인 변화값을 얻어낼 수 있다.
+
+  - 참고로 이러한 결론적인 미분값은 코드에서 **dJ/dvar = dvar**와 같은 형식으로 치환된다.
