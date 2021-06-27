@@ -77,3 +77,8 @@
   - 실제로 코딩할 때, 우리는 이러한 단계적인 미분값을 얻을 것이고 이를 곱해서 실질적인 변화값을 얻어낼 수 있다.
 
   - 참고로 이러한 결론적인 미분값은 코드에서 **dJ/dvar = dvar**와 같은 형식으로 치환된다.
+
+## Logistic Regression Gradient Descent
+
+- 그러면 실제로 이러한 미분값들을 어떻게 기울기 강하(Gradient Descent)에 사용할 수 있을지 알아보자.
+- ![Imgur](https://i.imgur.com/lg2Ofcx.png)
