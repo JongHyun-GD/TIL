@@ -34,9 +34,6 @@ int		bellmanford()
 	// 시작점을 제외한 모든 거리를 무한으로 설정한다.
 	dist = vector<ll>(V+1, INF);
 	dist[1] = 0;
-	for (i=0;i<edges.size();++i)
-		if (edges[i].u == 1)
-			dist[edges[i].v] = edges[i].c;
 	// 시작점을 제외한 모든 정점을 순회하면서 edge relaxation을 수행한다.
 	for (i=1;i<V;++i)
 	{
@@ -56,6 +53,7 @@ int		bellmanford()
 		u = edges[j].u;
 		v = edges[j].v;
 		c = edges[j].c;
+		if (dist[u] == INF) continue;
 		if (dist[v] > dist[u] + c)
 			return (-1);
 	}
