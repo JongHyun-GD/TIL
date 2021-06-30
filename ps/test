@@ -1,2 +1,2 @@
-g++ -g $1
+g++ -fsanitize=address -g $1
 ./a.out < input
