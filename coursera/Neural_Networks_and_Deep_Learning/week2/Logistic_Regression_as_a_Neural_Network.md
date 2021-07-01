@@ -36,7 +36,7 @@
     - ![img](https://latex.codecogs.com/gif.image?L(\hat{y},y)=\frac{1}{2}(\hat{y}-y)^2)
     - 이 Loss function은 구불구불한 그래프를 만들어내고 이는 global optima가 아니라 local optima로 빨려들어갈 여지가 있다.
   - 실제로 사용하는 식은 다음과 같다.
-    - ![img](https://latex.codecogs.com/gif.image?L(\hat{y},y)=-(y\log{\hat{y}}+(1-y)\log{(1-\hat{y})})
+    - ![img](https://latex.codecogs.com/gif.image?L(\hat{y},y)=-(y\log{\hat{y}}+(1-y)\log{(1-\hat{y})}))
     - 이게 어떻게 Loss function의 역할을 할까? 두 가지 경우를 생각해보면 알 수 있다.
       - ![img](https://latex.codecogs.com/gif.image?y=1:L(\hat{y},y)=-\log{\hat{y}})
         - 이 경우에 와이햇이 커질 수록, 즉 답에 근접할수록 Loss는 작아진다.
@@ -72,7 +72,7 @@
 
   - 이 고민은 **Chain rule**을 통해 풀 수 있다. 체인 룰은 다음의 식과 같이 작동한다.
 
-  - ![img](https://latex.codecogs.com/gif.image?\frac{dJ}{da} = \frac{dJ}{dv}*\frac{dv}{da})
+  - ![img](https://latex.codecogs.com/gif.image?\frac{dJ}{da}=\frac{dJ}{dv}*\frac{dv}{da})
 
   - 실제로 코딩할 때, 우리는 이러한 단계적인 미분값을 얻을 것이고 이를 곱해서 실질적인 변화값을 얻어낼 수 있다.
 
