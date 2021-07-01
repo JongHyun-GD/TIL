@@ -19,28 +19,28 @@
   - 이 판별기에 입력값은 사진이다. 앞에서 말한 것처럼 이 사진은 n_x길이의 한 벡터로 변환된다.
   - 그렇다면 출력값은 이 사진이 고양이일 확률이 된다. 확률은 0과 1사이의 숫자다.
   - Logistic Regression에는 입력값에 영향을 미치는 **두 개의 파라미터(w, b)**가 존재한다. 이 파라미터는 다음과 같은 수식을 세운다.
-    - ![img](https://latex.codecogs.com/gif.image?\dpi{200}w^Tx + b)
+    - ![img](https://latex.codecogs.com/gif.image?\dpi{200}w^Tx+b)
   - 이 값은 문제가 있는데, 이 값이 0과 1 사이의 수가 아닐 확률이 있기 때문이다. 이를 보완하기 위해 시그모이드 함수를 사용한다. 시그모이드 함수는 다음과 같다.
-    - ![img](https://latex.codecogs.com/gif.image?\dpi{200}\sigma(z) = \frac{1}{1+e^{-z})
+    - ![img](https://latex.codecogs.com/gif.image?\dpi{200}\sigma(z)=\frac{1}{1+e^{-z})
     - 들어오는 z값이 커질수록 e는 0에 수렴하고 z값이 작을 수록 e는 무한대에 가까워진다.
   - 이를 위의 수식에 적용하면 다음과 같은 식이 완성된다.
-    - ![img](https://latex.codecogs.com/gif.image?\dpi{200}\hat{y} = \sigma(w^Tx+b))
+    - ![img](https://latex.codecogs.com/gif.image?\dpi{200}\hat{y}=\sigma(w^Tx+b))
 
 ## Logistic Regression cost function
 
 - Logistic Regression을 여러 입력이 묶인 2차원 벡터로 일반화하면 다음과 같다.
-  - ![img](https://latex.codecogs.com/gif.image?\dpi{200}\hat{y}^i = \sigma(w^Tx^i+b))
+  - ![img](https://latex.codecogs.com/gif.image?\dpi{200}\hat{y}^i=\sigma(w^Tx^i+b))
 
 - 이렇게 얻은 값으로 Loss(Error) function을 만들 수 있다. Error function은 그 출력이 크면 클수록 답과는 멀다는 것을 의미한다.
   - 가장 간단한 방법으로 다음과 같은 식을 고안할 수 있다.
-    - ![img](https://latex.codecogs.com/gif.image?L(\hat{y},y) = \frac{1}{2}(\hat{y}-y)^2)
+    - ![img](https://latex.codecogs.com/gif.image?L(\hat{y},y)=\frac{1}{2}(\hat{y}-y)^2)
     - 이 Loss function은 구불구불한 그래프를 만들어내고 이는 global optima가 아니라 local optima로 빨려들어갈 여지가 있다.
   - 실제로 사용하는 식은 다음과 같다.
     - ![img](https://latex.codecogs.com/gif.image?L(\hat{y},y)=-(y\log{\hat{y}}+(1-y)\log{(1-\hat{y})})
     - 이게 어떻게 Loss function의 역할을 할까? 두 가지 경우를 생각해보면 알 수 있다.
-      - ![img](https://latex.codecogs.com/gif.image?y = 1:L(\hat{y},y)=-\log{\hat{y}})
+      - ![img](https://latex.codecogs.com/gif.image?y=1:L(\hat{y},y)=-\log{\hat{y}})
         - 이 경우에 와이햇이 커질 수록, 즉 답에 근접할수록 Loss는 작아진다.
-      - ![img](https://latex.codecogs.com/gif.image?y = 0:L(\hat{y},y)=-\log{(1-\hat{y})})
+      - ![img](https://latex.codecogs.com/gif.image?y=0:L(\hat{y},y)=-\log{(1-\hat{y})})
         - 화이햇이 작을 수록, 즉 답에 근접할수록 Loss는 작아진다.
 - Loss function을 정의했으니 이를 통해 Cost function을 정의할 수 있다.
   - Cost function의 개념은 쉽다. 각 training example의 Loss의 평균이다. 식으로 나타내면 다음과 같다.
