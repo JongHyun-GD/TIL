@@ -20,7 +20,6 @@ int main(void)
 	{
 		sum = 0;
 		mid = (left + right) / 2;
-		//cout << left << " " << mid << " " << right << endl;
 		for (i=0;i<K;++i)
 		{
 			sum += arr[i] / mid;
