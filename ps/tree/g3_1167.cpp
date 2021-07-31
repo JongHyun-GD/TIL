@@ -37,7 +37,7 @@ int	main(void)
 		v = q.front().second;
 		q.pop();
 
-		cout << v << " " << c << endl;
+		//cout << v << " " << c << endl;
 		if (visited[v]) continue;
 		else visited[v] = true;
 		if (max_dist < c) {
