@@ -39,3 +39,4 @@ class IntroToLINQ
 
 ## 성능
 - LINQ는 성능을 확보하기 위해 만들어진 것이 아니다. 그보다는 유지보수나 가독성을 위해 존재한다. 그렇다고 해서 성능이 아주 느리다는 것은 아니기에 LINQ를 쓰기에 적합한 상황이라면 가독성을 위해 쓰는 것이 나을 수 있다. 
+- [참고 사이트](https://medium.com/swlh/is-using-linq-in-c-bad-for-performance-318a1e71a732)
