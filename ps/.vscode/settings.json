@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"__tree": "cpp",
+		"complex": "cpp"
 	}
 }
