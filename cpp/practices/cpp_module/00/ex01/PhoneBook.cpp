@@ -41,16 +41,29 @@ int PhoneBook::add()
 int PhoneBook::search()
 {
 	std::cout << "*----------*----------*----------*----------*\n";
-	std::cout << "|first_name| last_name|  nickname|       H.P|\n";
+	std::cout << "|     index|first_name| last_name|  nickname|\n";
 	for (int i = 0; i < this->size; ++i) {
 		std::cout << "*----------*----------*----------*----------*\n";
-		std::cout << "|" << std::setw(10) << this->contacts[i].getFirstName() << std::setw(0)
+		std::cout << "|" << std::setw(10) << i << std::setw(0)
+				  << "|" << std::setw(10) << this->contacts[i].getFirstName() << std::setw(0)
 				  << "|" << std::setw(10) << this->contacts[i].getLastName() << std::setw(0)
 				  << "|" << std::setw(10) << this->contacts[i].getNickname() << std::setw(0)
-				  << "|" << std::setw(10) << this->contacts[i].getPhoneNumber() << std::setw(0)
 				  << "|\n";
 	}
 	std::cout << "*----------*----------*----------*----------*\n";
+	std::cout << "Enter index to inspect: ";
+	
+	int index;
+	std::cin >> index; 
+	if (index < 0 || index >= this->size)
+		std::cerr << "Invalid index!\n";
+	else {
+		std::cout << "First name: " << this->contacts[index].getFirstName() << "\n";
+		std::cout << "Last name: " << this->contacts[index].getLastName() << "\n";
+		std::cout << "Nickname: " << this->contacts[index].getNickname() << "\n";
+		std::cout << "Phone number: " << this->contacts[index].getPhoneNumber() << "\n";
+		std::cout << "Darkest Secret: " << this->contacts[index].getDarkestSecret() << "\n";
+	}
 
 	return 0;
 }

@@ -66,3 +66,14 @@ std::string Contact::getPhoneNumber()
 		return output;
 	}
 }
+
+std::string Contact::getDarkestSecret()
+{
+	if (this->darkest_secret.length() <= 10)
+		return this->darkest_secret;
+	else {
+		std::string output = this->darkest_secret.substr(0, 10);
+		output[9] = '.';
+		return output;
+	}
+}

@@ -6,9 +6,10 @@ int main(void)
 	PhoneBook *phoneBook;
 
 	phoneBook = new PhoneBook();
+	std::cout << "ADD / SEARCH / EXIT\n";
 	while (1)
 	{
-		std::cout << "command: ";
+		std::cout << "Enter command: ";
 		std::cin >> command;
 
 		if (command.compare("ADD") == 0)
@@ -18,7 +19,7 @@ int main(void)
 		else if (command.compare("EXIT") == 0)
 			break ;
 		else
-			cout << "Invalid command (ADD / SEARCH / EXIT)\n";
+			std::cout << "Invalid command (ADD / SEARCH / EXIT)\n";
 	}
 	std::cout << "bye bye~\n";
 }

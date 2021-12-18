@@ -11,6 +11,7 @@ public:
 	std::string getLastName();
 	std::string getNickname();
 	std::string getPhoneNumber();
+	std::string getDarkestSecret();
 
 private:
 	std::string first_name;
