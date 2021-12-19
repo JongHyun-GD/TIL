@@ -1,11 +1,11 @@
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror -g -std=c++98
 NAME		= test
 SRCS		= test.cpp \
-			  Account.cpp \
+			  Account.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
-%.o			: %.c
+%.o			: %.cpp
 	$(CC) -c $(CFLAGS) $(INC_LINK) $< -o $@
 
 all			: $(NAME)
