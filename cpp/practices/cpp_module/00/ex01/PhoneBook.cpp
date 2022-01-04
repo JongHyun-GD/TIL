@@ -25,20 +25,20 @@ int PhoneBook::add()
 	std::string darkest_secret;
 
 	std::cout << "First name: ";
-	std::cin >> first_name;
+	if (std::getline(std::cin, first_name).eof()) return (1);
 	std::cout << "Last name: ";
-	std::cin >> last_name;
+	if (std::getline(std::cin, last_name).eof()) return (1);
 	std::cout << "nickname: ";
-	std::cin >> nickname;
+	if (std::getline(std::cin, nickname).eof()) return (1);
 	std::cout << "Phone number: ";
-	std::cin >> phone_number;
+	if (std::getline(std::cin, phone_number).eof()) return (1);
 	if (this->is_number(phone_number) == false)
 	{
 		std::cout << "[Error] Phone Number has to be a combination of numbers\n";
-		return (1);
+		return (0);
 	}
 	std::cout << "What is your darkest secret?\n";
-	std::cin >> darkest_secret;
+	if (std::getline(std::cin, darkest_secret).eof()) return (1);
 	if (this->size < this->MAX_SIZE) {
 		this->contacts[this->size].assign(first_name, last_name, nickname, phone_number, darkest_secret);
 		this->size++;
@@ -49,7 +49,6 @@ int PhoneBook::add()
 		}
 		this->contacts[this->MAX_SIZE - 1].assign(first_name, last_name, nickname, phone_number, darkest_secret);
 	}
-
 	return 0;
 }
 
@@ -58,7 +57,7 @@ int PhoneBook::search()
 	if (size == 0)
 	{
 		std::cout << "[Error] There is not a available contacts!\n";
-		return (1);
+		return (0);
 	}
 	std::cout << "*----------*----------*----------*----------*\n";
 	std::cout << "|     index|first_name| last_name|  nickname|\n";
@@ -72,9 +71,15 @@ int PhoneBook::search()
 	}
 	std::cout << "*----------*----------*----------*----------*\n";
 	std::cout << "Enter index to inspect: ";
-	
+
 	int index;
-	std::cin >> index; 
+	std::cin >> index;
+	if (std::cin.fail()) {
+		std::cerr << "Invalid index!\n";
+		std::cin.clear();
+		std::cin.ignore(256, '\n');
+		return (0);
+	}
 	if (index < 0 || index >= this->size)
 		std::cerr << "Invalid index!\n";
 	else {
@@ -84,6 +89,7 @@ int PhoneBook::search()
 		std::cout << "Phone number: " << this->contacts[index].getPhoneNumber() << "\n";
 		std::cout << "Darkest Secret: " << this->contacts[index].getDarkestSecret() << "\n";
 	}
-
+	std::cin.clear();
+	std::cin.ignore(256, '\n');
 	return 0;
 }
