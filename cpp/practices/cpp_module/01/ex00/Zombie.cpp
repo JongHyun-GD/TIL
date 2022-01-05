@@ -2,7 +2,11 @@
 
 Zombie::Zombie(std::string name)
 {
-	this->name = name;
+	std::cout << "hi\n";
+	if (name.empty())
+		this->name = "";
+	else
+		this->name = name;
 }
 
 void Zombie::announce(void)

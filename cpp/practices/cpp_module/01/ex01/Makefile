@@ -1,5 +1,5 @@
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror -g -std=c++98
 NAME		= ZombieTest
 SRCS		= main.cpp \
 			  Zombie.cpp \

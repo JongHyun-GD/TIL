@@ -21,7 +21,7 @@ int replace(const std::string& filename, const std::string& s1, const std::strin
 	}
 
 	ofs.open(filename + ".replace");
-	if (!ifs)
+	if (!ofs)
 	{
 		std::cout << "Failed to open " << filename << "\n";
 		return (1);
