@@ -1,21 +1,5 @@
 #include "Fixed.hpp"
 
-void Fixed::print_float_bit(float f) {
-	int *p = (int *)&f;
-	int bit[32];
-	for (int i=0;i<32;++i) {
-		bit[i] = (*p) & 1;
-		(*p) = (*p) >> 1;
-	}
-	int cnt =0;
-	for (int i=31;i>=0;--i) {
-		cnt++;
-		std::cout << bit[i];
-		if (cnt % 8 == 0) std::cout << " ";
-	}
-	std::cout << std::endl;
-}
-
 Fixed::Fixed() {
 	this->rawBits = 0;
 	std::cout << "Default constructor called\n";
@@ -27,29 +11,12 @@ Fixed::Fixed(const Fixed &newFixed) {
 }
 
 Fixed::Fixed(const int value) {
-	int mask = (1 << 23) - 1; // mask to get 0~22 bits
-	int sign_mask = (1 << 31); // mask to get sign
-	std::cout << (value & mask) << std::endl;
-	this->rawBits = (value & mask) << frac;
-	this->rawBits = (value & sign_mask) | rawBits;
-
+	this->rawBits = (value & (1 << 31)) | (value << this->frac);
 	std::cout << "Int constructor called\n";
 }
 
 Fixed::Fixed(const float value) {
-	int *p = (int *)&value;
-	int exponent = 0;
-	int mantissa = 0;
-	this->rawBits = 0;
-	int exp_mask = ((1 << 8) - 1) << 23;
-	int mant_mask = ((1 << 23) - 1);
-	std::cout << value << std::endl;
-	print_float_bit(value);
-	exponent = ((exp_mask & (*p)) >> 23) - 127;
-	std::cout << "exp:\t" << exponent << std::endl;
-	mantissa = (mant_mask & (*p));
-	std::cout << "int:\t" << (mantissa >> (23 - exponent)) << std::endl;
-
+	this->rawBits = roundf(value * (1 << frac));
 	std::cout << "Float constructor called\n";
 }
 
@@ -79,17 +46,9 @@ void Fixed::setRawBits(int const raw) {
 }
 
 float Fixed::toFloat(void) const {
-	float res = 0;
-	int *p = (int*)&res;
-
-
-	return res;
+	return ((float)this->rawBits / (float)(1 << frac));
 }
 
 int Fixed::toInt(void) const {
-	int mask = ((1 << 23) - 1) << frac;
-	int sign_mask = ((1 << 31));
-	int res = (mask & this->rawBits) >> frac;
-	res |= sign_mask & this->rawBits;
-	return res;
+	return (this->rawBits / (1 << frac));
 }

@@ -2,6 +2,7 @@
 # define FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
 class Fixed {
 	public:
@@ -19,7 +20,6 @@ class Fixed {
 	private:
 		int rawBits;
 		static const int frac = 8;
-		void print_float_bit(float f);
 };
 
 std::ostream& operator <<(std::ostream&, const Fixed&);

@@ -1,27 +1,20 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-void print_float_bit(float f) {
-	int *p = (int *)&f;
-	int bit[32];
-	for (int i=0;i<32;++i) {
-		bit[i] = (*p) & 1;
-		(*p) = (*p) >> 1;
-	}
-	int cnt =0;
-	std::cout << sizeof(float) << std::endl;
-	for (int i=31;i>=0;--i) {
-		cnt++;
-		std::cout << bit[i];
-		if (cnt % 8 == 0) std::cout << " ";
-	}
-	std::cout << std::endl;
-}
-
-int main(void) {
-	Fixed const c(21.f);
-	print_float_bit(21.f);
-	std::cout << c << std::endl;
-
+int main(void)
+{
+	Fixed a;
+	Fixed const b(-10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
+	a = Fixed(1234.4321f);
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 	return 0;
 }
