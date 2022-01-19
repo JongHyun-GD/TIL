@@ -29,32 +29,32 @@ Fixed::~Fixed()
 	//std::cout << "Destructor called\n";
 }
 
-bool Fixed::operator<(Fixed const &other)
+bool Fixed::operator<(Fixed const &other) const
 {
 	return this->getRawBits() < other.getRawBits();
 }
 
-bool Fixed::operator<=(Fixed const &other)
+bool Fixed::operator<=(Fixed const &other) const
 {
 	return this->getRawBits() <= other.getRawBits();
 }
 
-bool Fixed::operator>(Fixed const &other)
+bool Fixed::operator>(Fixed const &other) const
 {
 	return this->getRawBits() > other.getRawBits();
 }
 
-bool Fixed::operator>=(Fixed const &other)
+bool Fixed::operator>=(Fixed const &other) const
 {
 	return this->getRawBits() >= other.getRawBits();
 }
 
-bool Fixed::operator==(Fixed const &other)
+bool Fixed::operator==(Fixed const &other) const
 {
 	return this->getRawBits() == other.getRawBits();
 }
 
-bool Fixed::operator!=(Fixed const &other)
+bool Fixed::operator!=(Fixed const &other) const
 {
 	return this->getRawBits() != other.getRawBits();
 }
@@ -152,17 +152,33 @@ int Fixed::toInt(void) const
 	return (this->rawBits / (1 << frac));
 }
 
-const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+Fixed const &Fixed::min(const Fixed &a, const Fixed &b)
 {
-	if (a.toFloat() <= b.toFloat())
+	if (a <= b)
 		return a;
 	else
 		return b;
 }
 
-const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+Fixed const &Fixed::max(const Fixed &a, const Fixed &b)
 {
-	if (a.toFloat() >= b.toFloat())
+	if (a >= b)
+		return a;
+	else
+		return b;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a <= b)
+		return a;
+	else
+		return b;
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a >= b)
 		return a;
 	else
 		return b;

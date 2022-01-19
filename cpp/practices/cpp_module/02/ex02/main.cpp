@@ -26,5 +26,6 @@ int main(void)
 	std::cout << "Fixed e = " << e << std::endl;
 	std::cout << "Fixed f = " << f << std::endl;
 	std::cout << "e/f = " << e / f << std::endl;
+	std::cout << "max(e,f) = " << Fixed::max(e, f) << std::endl;
 	return 0;
 }
