@@ -9,6 +9,7 @@ Cure::Cure()
 Cure::Cure(Cure &other)
 	: AMateria("cure")
 {
+	_type = other._type;
 	std::cout << "\033[1;32mCure is appeared.\033[0m\n";
 }
 

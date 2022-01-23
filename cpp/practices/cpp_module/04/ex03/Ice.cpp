@@ -9,6 +9,7 @@ Ice::Ice()
 Ice::Ice(Ice &other)
 	: AMateria("ice")
 {
+	_type = other._type;
 	std::cout << "\033[1;36mIce is appeared.\033[0m\n";
 }
 

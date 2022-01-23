@@ -9,6 +9,9 @@ class ICharacter;
 
 class AMateria
 {
+private:
+	AMateria();
+	AMateria &operator= (AMateria &other);
 protected:
 	std::string _type;
 public:

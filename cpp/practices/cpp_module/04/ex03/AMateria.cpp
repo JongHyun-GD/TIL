@@ -1,5 +1,10 @@
 #include "AMateria.hpp"
 
+AMateria::AMateria()
+{
+	_type = "";
+}
+
 AMateria::AMateria(std::string const &type)
 {
 	_type = type;
@@ -8,6 +13,12 @@ AMateria::AMateria(std::string const &type)
 AMateria::~AMateria()
 {
 	std::cout << "AMateria is disappeared.\n";
+}
+
+AMateria &AMateria::operator= (AMateria &other)
+{
+	_type = other._type;
+	return (*this);
 }
 
 std::string const &AMateria::getType() const
