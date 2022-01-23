@@ -9,13 +9,13 @@ SRCS		= main.cpp			\
 
 OBJS		= $(SRCS:.cpp=.o)
 
-%.o			: %.c
-	$(CC) -c $(CFLAGS) $(INC_LINK) $< -o $@
+%.o			: %.cpp
+	$(CC) -c $(CFLAGS) $< -o $@
 
 all			: $(NAME)
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(LFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean		:
 	rm -f $(OBJS)
@@ -26,3 +26,4 @@ fclean		: clean
 re			: fclean all
 
 .PHONY		: all clean fclean re
+
