@@ -6,11 +6,11 @@
 #include <exception>
 
 template<typename T>
-const typename T::const_iterator easyfind(const T &container, int val)
+const typename T::iterator easyfind(T &container, int val)
 {
-	typename T::const_iterator s = container.begin();
-	typename T::const_iterator e = container.end();
-	typename T::const_iterator res = std::find(s, e, val);
+	typename T::iterator s = container.begin();
+	typename T::iterator e = container.end();
+	typename T::iterator res = std::find(s, e, val);
 	if (res == e)
 		throw std::out_of_range("Can not find value");
 	else
