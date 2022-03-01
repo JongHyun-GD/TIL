@@ -1,5 +1,13 @@
 {
 	"files.associations": {
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"__tree": "cpp",
+		"complex": "cpp",
+		"iostream": "cpp",
+		"__string": "cpp",
+		"algorithm": "cpp",
+		"functional": "cpp",
+		"bitset": "cpp",
+		"cstdlib": "cpp"
 	}
 }
